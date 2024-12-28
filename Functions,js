@@ -1,0 +1,196 @@
+
+/* Non-Parameterized without return
+
+function apple(){
+    console.log("apple")
+}
+apple();
+*/
+
+/*Non-Parameterized with return
+
+function orange(){
+    let a="orange";
+    return a;
+}
+let b=orange();
+console.log(b);
+*/
+
+//Arrow function
+
+//parameter without return
+/*let addition=(a,b)=>{
+    console.log(a+b);
+}
+addition(1,2);
+*/
+
+//parameter without return
+/*let addition=(a,b)=>{
+    return(a+b)
+}
+console.log(addition(20,10));
+*/
+
+//Spread operator using objects
+/*let ob={
+    name: "Abi",
+    age:20,
+}
+let ob2 = (...ob)
+console.log(ob2)
+*/
+
+/* Destruction of objects
+let ob={
+    name: "Abi",
+    age: 20,
+    phn: 789
+}
+let(name,...a)=ob;
+console.log(name);
+console.log(a);
+*/
+
+//Callback
+/*
+function attendance(callback){
+    setTimeout(()=>{
+        console.log("attendance taken");
+        callback();
+    },2000);
+}
+function lunch(callback){
+    setTimeout(()=>{
+        console.log("lunch taken");
+        callback();
+    },2000);
+}
+function goinghome(callback){
+    setTimeout(()=>{
+        console.log("bus taken");
+        callback();
+    },2000);
+}
+
+//callback hell
+
+attendance(()=>{
+    lunch(()=>{
+        goinghome(()=>{
+            console.log("Day completed");
+        })
+    })
+})
+*/
+
+
+/*
+//  Asynchronous(async) / await (in parallel to promise) to avoid then conditions in promise it is used
+      // await is used to hold for some time to take all required details
+      // synchronous - all function should wait and executes one after other
+      // asynchronous - all function work simultaneously if one function does not depend on other function
+
+      function attendance()
+      {
+          return new Promise((resolve,reject)=>
+          {
+              let att = true;
+              if(att)
+                  resolve("present")
+              else 
+                  reject("absent")
+          })
+      }
+      function lunch()
+      {
+          return new Promise((resolve,reject)=>
+              {
+                  let lun = false;
+                  if(lun)
+                      resolve("had lunch")
+                  else 
+                      reject("did not have lunch")
+              })
+      }
+      function go()
+      {
+          return new Promise((resolve,reject)=>
+              {
+                  let going = true;
+                  if(going)
+                      resolve("went")
+                  else 
+                      reject("hostel")
+              })
+      } 
+    async function fullday()
+    {
+        try
+        {
+            let atten = await attendance();
+            console.log(atten)
+            let lunc = await lunch()
+            console.log(lunc)
+            let home = await go()
+            console.log(home)
+        }
+        catch(error)
+        {
+            console.error(error)
+        }
+    }
+    fullday()
+*/
+
+/* Promise
+
+function attendance() {
+    return new Promise((resolve, reject) => {
+        let att = true; // Change this to false to test rejection
+        if (att)
+            resolve("present");
+        else
+            reject("absent");
+    });
+}
+
+function lunch() {
+    return new Promise((resolve, reject) => {
+        let lun = false; // Change this to true to test resolution
+        if (lun)
+            resolve("had lunch");
+        else
+            reject("did not have lunch");
+    });
+}
+
+function go() {
+    return new Promise((resolve, reject) => {
+        let going = true; // Change this to false to test rejection
+        if (going)
+            resolve("went");
+        else
+            reject("hostel");
+    });
+}
+
+// Correct chaining of promises
+attendance()
+    .then((value) => {
+        console.log(value);
+        return lunch();
+    })
+    .then((value) => {
+        console.log(value);
+        return go();
+    })
+    .then((value) => {
+        console.log(value);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+*/
+
